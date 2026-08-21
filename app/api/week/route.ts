@@ -65,7 +65,7 @@ export async function GET(req: Request) {
         return {
             date: dateStr,
             weekday,
-            program: workout?.programs?.name ?? null,
+            program: workout?.programs?.[0]?.name ?? null,
             completed: workout?.status === 'completed'
         }
     })
