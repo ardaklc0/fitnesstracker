@@ -65,9 +65,9 @@ export default function WeightPage() {
             <form onSubmit={handleSave} className="mb-6 space-y-3">
                 {error && <div className="text-sm text-red-600">{error}</div>}
                 <div className="grid grid-cols-1 gap-2 sm:grid-cols-[minmax(0,1fr)_8rem_auto] sm:items-center">
-                    <input type="date" value={date} onChange={(e) => setDate(e.target.value)} className="w-full min-w-0 rounded border p-2" />
-                    <input type="number" step="0.1" placeholder="kg" value={weight} onChange={(e) => setWeight(e.target.value)} className="w-full min-w-0 rounded border p-2" />
-                    <button className="w-full rounded bg-slate-900 px-4 py-2 text-white sm:w-auto">Save</button>
+                    <input type="date" value={date} onChange={(e) => setDate(e.target.value)} className="h-11 w-full min-w-0 appearance-none rounded border px-3 text-base leading-normal" />
+                    <input type="number" step="0.1" placeholder="kg" value={weight} onChange={(e) => setWeight(e.target.value)} className="h-11 w-full min-w-0 rounded border px-3 text-base leading-normal" />
+                    <button className="h-11 w-full rounded bg-slate-900 px-4 text-white sm:w-auto">Save</button>
                 </div>
             </form>
 

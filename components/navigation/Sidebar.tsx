@@ -26,8 +26,9 @@ export default function Sidebar() {
 
     return (
         <aside className="hidden md:flex md:flex-col md:w-60 md:gap-4 md:pt-6 md:pb-6 md:px-4 bg-white border-r dark:border-slate-700 dark:bg-slate-900">
-            <div className="mb-6 px-2">
+            <div className="mb-6 space-y-3 px-2">
                 <Link href="/" className="text-lg font-semibold">Fitness Tracker</Link>
+                <ThemeToggle />
             </div>
             <nav className="flex-1 px-2 space-y-1">
                 {items.map((it) => (
@@ -35,7 +36,6 @@ export default function Sidebar() {
                 ))}
             </nav>
             <div className="px-2">
-                <ThemeToggle />
                 <button type="button" onClick={handleSignOut} className="text-sm text-slate-500 hover:underline">
                     Sign out
                 </button>
