@@ -1,0 +1,31 @@
+@import 'react-day-picker/dist/style.css';
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.rdp {
+    margin: 0;
+}
+
+.rdp-months {
+    justify-content: center;
+    width: 100%;
+}
+
+.rdp-month {
+    width: 100%;
+}
+
+.rdp-table {
+    width: 100%;
+}
+
+html,
+body {
+    min-height: 100%;
+}
+
+body {
+    @apply bg-white text-slate-900 antialiased;
+}
