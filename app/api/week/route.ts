@@ -62,10 +62,11 @@ export async function GET(req: Request) {
     const days = dates.map((dateStr, idx) => {
         const weekday = idx + 1 // 1 = Monday
         const workout = workouts?.find((w: any) => w.date === dateStr)
+        const program = Array.isArray(workout?.programs) ? workout.programs[0] : workout?.programs
         return {
             date: dateStr,
             weekday,
-            program: workout?.programs?.[0]?.name ?? null,
+            program: program?.name ?? null,
             completed: workout?.status === 'completed'
         }
     })

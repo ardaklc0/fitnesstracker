@@ -6,6 +6,7 @@ import { usePathname, useRouter } from 'next/navigation'
 import { supabase } from '../../lib/supabaseClient'
 import Sidebar from './Sidebar'
 import MobileNav from './MobileNav'
+import ThemeToggle from './ThemeToggle'
 
 export default function MainLayout({ children }: { children: React.ReactNode }) {
     const pathname = usePathname()
@@ -55,20 +56,23 @@ export default function MainLayout({ children }: { children: React.ReactNode }) 
         <div className="min-h-screen flex bg-slate-50">
             <Sidebar />
             <div className="flex-1 min-h-screen min-w-0">
-                <div className="md:hidden sticky top-0 z-30 flex items-center justify-between border-b bg-white px-4 py-3">
+                <div className="md:hidden sticky top-0 z-30 flex items-center justify-between border-b bg-white px-4 py-3 dark:border-slate-700 dark:bg-slate-900">
                     <Link href="/" className="font-semibold">Fitness Tracker</Link>
-                    <button
-                        type="button"
-                        aria-label={menuOpen ? 'Close menu' : 'Open menu'}
-                        aria-expanded={menuOpen}
-                        onClick={() => setMenuOpen((open) => !open)}
-                        className="flex h-10 w-10 flex-col items-center justify-center rounded border p-2 text-slate-700"
-                    >
-                        <span className="sr-only">{menuOpen ? 'Close menu' : 'Open menu'}</span>
-                        <span className="block w-5 border-t-2" />
-                        <span className="mt-1 block w-5 border-t-2" />
-                        <span className="mt-1 block w-5 border-t-2" />
-                    </button>
+                    <div className="flex items-center gap-2">
+                        <ThemeToggle />
+                        <button
+                            type="button"
+                            aria-label={menuOpen ? 'Close menu' : 'Open menu'}
+                            aria-expanded={menuOpen}
+                            onClick={() => setMenuOpen((open) => !open)}
+                            className="flex h-10 w-10 flex-col items-center justify-center rounded border p-2 text-slate-700 dark:border-slate-700 dark:text-slate-300"
+                        >
+                            <span className="sr-only">{menuOpen ? 'Close menu' : 'Open menu'}</span>
+                            <span className="block w-5 border-t-2" />
+                            <span className="mt-1 block w-5 border-t-2" />
+                            <span className="mt-1 block w-5 border-t-2" />
+                        </button>
+                    </div>
                     {menuOpen && (
                         <>
                             <button
@@ -77,7 +81,7 @@ export default function MainLayout({ children }: { children: React.ReactNode }) 
                                 onClick={() => setMenuOpen(false)}
                                 className="fixed inset-0 top-[57px] bg-slate-900/20"
                             />
-                            <nav className="absolute right-4 top-14 z-40 w-56 rounded border bg-white p-2 shadow-lg">
+                            <nav className="absolute right-4 top-14 z-40 w-56 rounded border bg-white p-2 shadow-lg dark:border-slate-700 dark:bg-slate-800">
                                 {[
                                     ['/', 'Dashboard'],
                                     ['/calendar', 'Calendar'],
@@ -87,7 +91,7 @@ export default function MainLayout({ children }: { children: React.ReactNode }) 
                                     ['/progress', 'Progress'],
                                     ['/settings', 'Settings']
                                 ].map(([href, label]) => (
-                                    <Link key={href} href={href} className="block rounded px-3 py-2 text-slate-700 hover:bg-slate-100">
+                                    <Link key={href} href={href} className="block rounded px-3 py-2 text-slate-700 hover:bg-slate-100 dark:text-slate-200 dark:hover:bg-slate-700">
                                         {label}
                                     </Link>
                                 ))}

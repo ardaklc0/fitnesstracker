@@ -64,10 +64,10 @@ export default function WeightPage() {
             <h1 className="text-2xl font-semibold mb-4">Body Weight</h1>
             <form onSubmit={handleSave} className="mb-6 space-y-3">
                 {error && <div className="text-sm text-red-600">{error}</div>}
-                <div className="flex flex-col sm:flex-row gap-2">
-                    <input type="date" value={date} onChange={(e) => setDate(e.target.value)} className="border rounded p-2 w-full sm:w-auto" />
-                    <input type="number" step="0.1" placeholder="kg" value={weight} onChange={(e) => setWeight(e.target.value)} className="border rounded p-2 w-full sm:w-32" />
-                    <button className="bg-slate-900 text-white px-4 py-2 rounded w-full sm:w-auto">Save</button>
+                <div className="grid grid-cols-1 gap-2 sm:grid-cols-[minmax(0,1fr)_8rem_auto] sm:items-center">
+                    <input type="date" value={date} onChange={(e) => setDate(e.target.value)} className="w-full min-w-0 rounded border p-2" />
+                    <input type="number" step="0.1" placeholder="kg" value={weight} onChange={(e) => setWeight(e.target.value)} className="w-full min-w-0 rounded border p-2" />
+                    <button className="w-full rounded bg-slate-900 px-4 py-2 text-white sm:w-auto">Save</button>
                 </div>
             </form>
 
@@ -79,7 +79,7 @@ export default function WeightPage() {
             ) : (
                 <ul className="space-y-2">
                     {entries.map((e) => (
-                        <li key={e.id} className="bg-white border rounded p-3 flex justify-between items-center gap-3">
+                        <li key={e.id} className="flex flex-col items-stretch justify-between gap-3 rounded border bg-white p-3 sm:flex-row sm:items-center">
                             <div>
                                 <div className="font-medium">{new Date(e.date).toLocaleDateString()}</div>
                                 <div className="text-sm text-slate-500">{e.weight_kg} kg</div>
@@ -88,7 +88,7 @@ export default function WeightPage() {
                                 type="button"
                                 onClick={() => handleDelete(e.id)}
                                 disabled={deletingId === e.id}
-                                className="text-sm px-3 py-2 border border-red-200 text-red-600 rounded disabled:opacity-50"
+                                className="w-full rounded border border-red-200 px-3 py-2 text-sm text-red-600 disabled:opacity-50 sm:w-auto"
                             >
                                 {deletingId === e.id ? 'Deleting...' : 'Delete'}
                             </button>

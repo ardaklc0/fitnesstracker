@@ -29,3 +29,36 @@ body {
 body {
     @apply bg-white text-slate-900 antialiased;
 }
+
+html.dark body {
+    @apply bg-slate-950 text-slate-100;
+}
+
+html.dark .bg-white {
+    @apply bg-slate-900;
+}
+
+html.dark .bg-slate-50 {
+    @apply bg-slate-950;
+}
+
+html.dark .text-slate-500,
+html.dark .text-slate-600 {
+    @apply text-slate-400;
+}
+
+html.dark .text-slate-700 {
+    @apply text-slate-300;
+}
+
+html.dark .border,
+html.dark .border-r,
+html.dark .border-b {
+    @apply border-slate-700;
+}
+
+html.dark input,
+html.dark textarea,
+html.dark select {
+    @apply border-slate-700 bg-slate-900 text-slate-100;
+}

@@ -20,8 +20,8 @@ export default function LoginPage() {
             if (res.error) {
                 setError(res.error.message)
             } else {
-                // Redirect to dashboard
-                router.push('/')
+                router.replace('/')
+                router.refresh()
             }
         } catch (err: any) {
             setError(err?.message ?? 'An error occurred')
