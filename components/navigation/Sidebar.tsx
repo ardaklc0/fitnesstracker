@@ -1,5 +1,9 @@
+'use client'
+
 import Link from 'next/link'
 import React from 'react'
+import { useRouter } from 'next/navigation'
+import { supabase } from '../../lib/supabaseClient'
 
 const items = [
     { href: '/', label: 'Dashboard' },
@@ -12,6 +16,13 @@ const items = [
 ]
 
 export default function Sidebar() {
+    const router = useRouter()
+
+    async function handleSignOut() {
+        await supabase.auth.signOut()
+        router.replace('/login')
+    }
+
     return (
         <aside className="hidden md:flex md:flex-col md:w-60 md:gap-4 md:pt-6 md:pb-6 md:px-4 bg-white border-r">
             <div className="mb-6 px-2">
@@ -23,7 +34,9 @@ export default function Sidebar() {
                 ))}
             </nav>
             <div className="px-2">
-                <Link href="/login" className="block text-sm text-slate-500 hover:underline">Sign in / out</Link>
+                <button type="button" onClick={handleSignOut} className="text-sm text-slate-500 hover:underline">
+                    Sign out
+                </button>
             </div>
         </aside>
     )
